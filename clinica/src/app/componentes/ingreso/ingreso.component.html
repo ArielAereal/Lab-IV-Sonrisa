@@ -1,0 +1,64 @@
+
+<div class="container">
+
+    <app-volver-inicio></app-volver-inicio>
+</div>
+
+
+<div class="container">
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="../../../assets/imagenes/ingreso.jpg" class="brand_logo" alt="Logo">
+          </div>          
+				</div>        
+				<div class="d-flex justify-content-center form_container">
+					<form [formGroup]="ingresoForm" class=" container modal-content animate" (ngSubmit)="Ingresar()">
+						<div class="input-group mb-3">
+              
+              <div class="container-fluid">
+
+                <h4 class="font-italic text-center bg-1">Ingreso del Usuario</h4>
+
+              </div>
+              
+							<div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>                
+							</div>
+              <input type="text" class=" form-control input_user texto-config" placeholder="Correo electrónico" name="usuario" [formControl]="usuario" required>      							
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              
+              <input type="password" class="form-control texto-config input_pass" placeholder="Contraseña" name="clave"  [formControl]="clave" required>
+							
+            </div>
+            <div class="container-fluid row">
+
+                <div class="col-5">
+
+                </div>
+
+              <div class="col-7">
+
+                <button type="submit" class="signupbtn btn btn-md login_btn btn-success" [disabled]="!ingresoForm.valid">Continuar</button>
+              </div>              
+              
+            </div>			
+            
+          </form>          
+         
+				</div>								
+				
+        <div >         
+      </div>
+      <div >         
+		</div>
+	</div>
+</div>  
+
+

@@ -14,13 +14,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { IngresoComponent } from './componentes/ingreso/ingreso.component';
+import { VolverInicioComponent } from './componentes/volver-inicio/volver-inicio.component';
+import { SalaDeEsperaComponent } from './componentes/sala-de-espera/sala-de-espera.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrincipalComponent,
-    ErrorComponent
+    ErrorComponent,
+    IngresoComponent,
+    VolverInicioComponent,
+    SalaDeEsperaComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,8 @@ import {FormsModule} from '@angular/forms';
     AngularFirestoreModule, 
     AngularFireAuthModule, 
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
