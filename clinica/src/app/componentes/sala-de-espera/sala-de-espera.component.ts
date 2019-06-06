@@ -17,13 +17,20 @@ export class SalaDeEsperaComponent implements OnInit {
   }
 
   Salir() :void{
-    console.log("gracias por su tiempo");
 
-    
-    this.afAuth.auth.signOut();
-    
-    this.ruter.navigate(['principal']);
+this.afAuth.auth.signOut()
+.then(function(){
+  console.log("gracias por su tiempo");
+  
+})
+.catch(function(error){
+  
+  console.log("gracias por su tiempo, pero algo dudoso pasó");
+  console.info(error.message);
+});
 
+
+this.ruter.navigate(['principal']);
 
   }
 

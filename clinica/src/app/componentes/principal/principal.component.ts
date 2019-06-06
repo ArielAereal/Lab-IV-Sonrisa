@@ -22,8 +22,9 @@ import {Router} from '@angular/router';
 
 // ver/seguir
 
-// firebaseui-web
-// google-signin#before-you-begin
+// manage-users (o manejar usuaries)
+
+// firebaseui-web ( te manda al before you begin)
 
 // google-signin
 // web/start
@@ -36,12 +37,13 @@ export class PrincipalComponent implements OnInit {
 
   elmensaje:string ="";
 
-  unaLista:any[];  
+  unaLista:any[];    
 
-  // se entiende
-  gprov : auth.GoogleAuthProvider;
+  // el auth.provider es un atributo o va como parametro al constructor,
+  // como todas las cosas raras?
+  
 
-  constructor(private db:AngularFirestore, private afAuth: AngularFireAuth, private ruter : Router) {
+  constructor(private db:AngularFirestore, private afAuth: AngularFireAuth, private ruter : Router, private gprov:auth.GoogleAuthProvider) {
     this.unaLista = new Array();
     this.loQueViene = this.db.collection('pruebas').valueChanges();
    }
@@ -69,8 +71,40 @@ export class PrincipalComponent implements OnInit {
   }
 
   ingresoGoogle():void{
-    
-    this.afAuth.auth.signInWithPopup(this.gprov);
+
+    // this.afAuth.auth().getRedirectResult(this.gprov);
+    // this.afAuth.auth().signInWithRedirect(this.gprov);
+
+    this.afAuth.auth.signInWithPopup(this.gprov)
+    .then(function(result){
+
+      
+      // alcanza con este token ? 
+
+      // cast a 
+      // OAuthCredential
+
+      // no es un JWT
+      let token = (<any>result).credential.accessToken;      
+      
+      console.info(token);
+
+      let user = result.user;
+      
+      console.info(user.displayName);
+      
+      console.info(user.email);
+
+
+    })
+    .catch(function (error){
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      // The email of the user's account used.
+      let email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      let credential = error.credential;
+    });
 
     this.ruter.navigate(['../sala-de-espera']);
   }

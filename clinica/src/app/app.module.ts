@@ -19,6 +19,8 @@ import { IngresoComponent } from './componentes/ingreso/ingreso.component';
 import { VolverInicioComponent } from './componentes/volver-inicio/volver-inicio.component';
 import { SalaDeEsperaComponent } from './componentes/sala-de-espera/sala-de-espera.component';
 
+import {auth} from 'firebase/app';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,7 @@ import { SalaDeEsperaComponent } from './componentes/sala-de-espera/sala-de-espe
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [auth.GoogleAuthProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
