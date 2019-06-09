@@ -19,6 +19,8 @@ import { IngresoComponent } from './componentes/ingreso/ingreso.component';
 import { VolverInicioComponent } from './componentes/volver-inicio/volver-inicio.component';
 import { SalaDeEsperaComponent } from './componentes/sala-de-espera/sala-de-espera.component';
 
+import {FileUploadModule} from 'ng2-file-upload';
+
 import {auth} from 'firebase/app';
 
 @NgModule({
@@ -30,6 +32,8 @@ import {auth} from 'firebase/app';
     VolverInicioComponent,
     SalaDeEsperaComponent
   ],
+  //entryComponents: [SalaDeEsperaComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,7 +42,8 @@ import {auth} from 'firebase/app';
     AngularFireAuthModule, 
     AngularFireStorageModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule
   ],
   providers: [auth.GoogleAuthProvider],
   bootstrap: [AppComponent]

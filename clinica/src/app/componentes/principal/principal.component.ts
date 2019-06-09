@@ -14,6 +14,8 @@ import { auth } from 'firebase/app';
 
 import {Router} from '@angular/router';
 
+// el token o la identificacion permiten al usuario entrar o no a determinados lugares, etc. hacerlo
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
