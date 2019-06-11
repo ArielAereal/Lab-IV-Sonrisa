@@ -14,6 +14,23 @@ import { auth } from 'firebase/app';
 
 import {Router} from '@angular/router';
 
+/*
+ creé otro proyecto de prueba en 
+
+ https://segundaprueba2p.firebaseapp.com/
+
+ mis progresos flojos:
+
+ algún tipo de control sobre el usuario equivocado
+ recaptcha es parte del formcontrol de ingreso
+ trae un mensaje del cloud firestore
+ veo si alguien esta logueado con el authstate
+
+ falta mucho
+
+*/
+
+
 // el token o la identificacion permiten al usuario entrar o no a determinados lugares, etc. hacerlo
 
 @Component({
