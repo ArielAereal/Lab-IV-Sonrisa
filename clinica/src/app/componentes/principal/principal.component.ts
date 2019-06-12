@@ -19,14 +19,23 @@ import {Router} from '@angular/router';
 
  https://segundaprueba2p.firebaseapp.com/
 
- mis progresos flojos:
+ mis pocos progresos:
 
- algún tipo de control sobre el usuario equivocado
+ algún tipo de control sobre el usuario equivocado 
  recaptcha es parte del formcontrol de ingreso
- trae un mensaje del cloud firestore
- veo si alguien esta logueado con el authstate
 
  falta mucho
+
+ los usuarios están linkeados entre Cloud Firestore y los Auntenticados
+
+ el AuthGuard lo uso para que nadie que NO esté logueado acceda a las páginas sensibles
+
+ encontré el JWT del currentUser
+
+ pero todavía no integro todo, no redirecciona a cada usuario donde corresponde
+
+ ... casi.
+
 
 */
 
