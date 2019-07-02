@@ -2,17 +2,26 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PrincipalComponent } from './componentes/principal/principal.component';
-import { ErrorComponent } from './componentes/error/error.component';
 import { IngresoComponent } from './componentes/ingreso/ingreso.component';
-import { SalaDeEsperaComponent } from './componentes/sala-de-espera/sala-de-espera.component';
+import { EspecialistaComponent } from './componentes/especialista/especialista.component';
+import { RecepcionistaComponent } from './componentes/recepcionista/recepcionista.component';
+import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { ErrorComponent } from './componentes/error/error.component';
 
+//{path:'', component:},
 const routes: Routes = [
-  {path: '', redirectTo : 'principal', pathMatch : 'full'},
-  {path: 'principal', component : PrincipalComponent},
- // {path: 'ingreso', component : IngresoComponent},
-  {path: 'error', component : ErrorComponent},
-  {path: 'sala-de-espera', component : SalaDeEsperaComponent},
-  {path: '**', component: ErrorComponent}
+  {path:'', redirectTo: 'principal', pathMatch: 'full'},
+  {path: 'principal', component: PrincipalComponent, children:[
+    {path:'ingreso', component: IngresoComponent}
+  ]},
+  {path:'recepcionista', component: RecepcionistaComponent},
+  {path:'especialista', component: EspecialistaComponent},
+  {path:'cliente', component: ClienteComponent},
+  {path:'administrador', component:AdminComponent},
+
+  {path:'error', component: ErrorComponent},
+  {path:'**', component: ErrorComponent}
 ];
 
 @NgModule({

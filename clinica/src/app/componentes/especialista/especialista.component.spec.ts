@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VolverInicioComponent } from './volver-inicio.component';
+import { EspecialistaComponent } from './especialista.component';
 
-describe('VolverInicioComponent', () => {
-  let component: VolverInicioComponent;
-  let fixture: ComponentFixture<VolverInicioComponent>;
+describe('EspecialistaComponent', () => {
+  let component: EspecialistaComponent;
+  let fixture: ComponentFixture<EspecialistaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VolverInicioComponent ]
+      declarations: [ EspecialistaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VolverInicioComponent);
+    fixture = TestBed.createComponent(EspecialistaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

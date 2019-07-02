@@ -1,64 +1,44 @@
-
 <div class="container">
+  <app-volver></app-volver>
 
-    <app-volver-inicio></app-volver-inicio>
+  <button class="btn btn-lg btn-info" (click)='conAd()'>Admin</button>
+  <button class="btn btn-lg btn-info"(click)='conCli()'>Cliente</button>
+  <button class="btn btn-lg btn-info" (click)='conEs()'>Especialista</button>
+  <button class="btn btn-lg btn-info" (click)='conRe()'>Recepcionista</button>
 </div>
 
+<div class="container h-100 bg-1">
+  <div class="container d-flex justify-content-center h-100">
 
-<div class="container">
-	<div class="container h-100">
-		<div class="d-flex justify-content-center h-100">
-			<div class="user_card">
-				<div class="d-flex justify-content-center">
-					<div class="brand_logo_container">
-						<img src="../../../assets/imagenes/ingreso.jpg" class="brand_logo" alt="Logo">
-          </div>          
-				</div>        
-				<div class="d-flex justify-content-center form_container">
-					<form [formGroup]="ingresoForm" class=" container modal-content animate" (ngSubmit)="Ingresar()">
-						<div class="input-group mb-3">
-              
-              <div class="container-fluid">
-
-                <h4 class="font-italic text-center bg-1">Ingreso del Usuario</h4>
-
-              </div>
-              
-							<div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>                
-							</div>
-              <input type="text" class=" form-control input_user texto-config" placeholder="Correo electrónico" name="usuario" [formControl]="usuario" required>      							
-						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-              </div>
-              
-              <input type="password" class="form-control texto-config input_pass" placeholder="Contraseña" name="clave"  [formControl]="clave" required>
-							
-            </div>
-            <div class="container-fluid row">
-
-                <div class="col-5">
-
-                </div>
-
-              <div class="col-7">
-
-                <button type="submit" class="signupbtn btn btn-md login_btn btn-success" [disabled]="!ingresoForm.valid">Continuar</button>
-              </div>              
-              
-            </div>			
-            
-          </form>          
-         
-				</div>								
-				
-        <div >         
+  <form [formGroup]="ingresoForm" class="form-signin container modal-content animate" (ngSubmit)="Ingresar()" >
+    <div class="row">
+      <div class="col-3">
       </div>
-      <div >         
-		</div>
-	</div>
-</div>  
 
+      <div class="col container justify-content-center">
+        <img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/craneo.jpg" alt="" width="72" height="72">
+      </div>
 
+    </div>
+
+    <h1 class="h3 mb-3 font-weight-normal">Ingreso de Usuarios</h1>
+    <label for="inputEmail" class="sr-only">Correo</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Correo" autofocus [formControl]="correo">
+    <label for="inputPassword" class="sr-only">Clave</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Clave" [formControl]="clave">
+
+    <div class="checkbox mb-3">     
+     <re-captcha class="capt" [formControl]="myRecaptcha"
+              (resolved) = 'resolved($event)' siteKey='6Lffw6sUAAAAAAdKFTvFSBukj4yVanHZaHIIzvSO'
+              >
+                  </re-captcha>
+    </div>
+    <button class="btn btn-lg btn-warning btn-block" [disabled]="!ingresoForm.valid" type="submit">Ingresar</button>
+   
+  </form>
+  
+  </div> 
+
+  <!-- ultimo
+  -->
+</div>

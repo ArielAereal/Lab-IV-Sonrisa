@@ -4,19 +4,27 @@ import {Router} from '@angular/router';
 
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
-//incorporar el JWT auth y eso, etc.
-
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import {Usuario} from '../../clases/usuario';
 
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.component.html',
   styleUrls: ['./ingreso.component.css']
 })
+
+// nav bar volver e ingresar
+
+// form validator
+
+// error de logueo
+
 export class IngresoComponent implements OnInit {
 
-  usuario= new FormControl('',[
+  myRecaptcha :FormControl = new FormControl(false);
+
+  elUsuario:Usuario;
+
+  correo= new FormControl('',[
     Validators.required,
     Validators.minLength(3)
   ]);
@@ -28,25 +36,78 @@ export class IngresoComponent implements OnInit {
 
   ingresoForm: FormGroup = this.builder.group({
 
-    usuario:this.usuario,
-    clave: this.clave
+    correo:this.correo,
+    clave: this.clave,
+
+    // en el localhost me molesta
+    //myRecaptcha:this.myRecaptcha
     
   });
 
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+}
 
-  constructor( private builder: FormBuilder, private ruter : Router, private afAuth: AngularFireAuth) { }
+  constructor(private ruter :Router, private builder: FormBuilder) { }
 
   ngOnInit() {
   }
 
- 
-  Ingresar(): void{
+  Ingresar(): void{  
+    
+    this.elUsuario = new Usuario();
 
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-    console.log("Adentro");
+    this.elUsuario.correo = this.ingresoForm.get('correo').value;
+    this.elUsuario.clave = this.ingresoForm.get('clave').value;
 
-    this.ruter.navigate(['sala-de-espera']);
+    console.info(this.elUsuario);
+
+    /*
+    this.pas.ingresoUsuario(this.elUsuario)
+    .then(user=>{
+      console.log("trata de ingresar usuario");
+
+      // undefined
+      // console.info(user);
+     
+    })
+    .catch(err=>{
+
+      console.info(err.message);
+
+    });
+
+    */
+  }
+
+  conAd(){
+    console.log("completo con Admin");
+  }
+
+  conCli(){
+    console.log("completo con Cliente");
+      }
+
+  conEs(){
+
+    console.log("completo con Especialista");
 
   }
 
+  conRe(){
+
+    console.log("completo con Recepcionista");
+
+  }
+
+  onScriptLoad() {
+    console.log('Google reCAPTCHA loaded and is ready for use!');    
+   
 }
+
+onScriptError() {
+    console.log('Something went long when loading the Google reCAPTCHA')
+}
+
+
+} // ingreso

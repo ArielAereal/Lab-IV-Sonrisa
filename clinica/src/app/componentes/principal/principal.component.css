@@ -1,5 +1,10 @@
+.container{
+    background-color: rgb(243, 187, 245);
 
-.container {
-    background-color: rgb(193, 174, 211);
+    margin: 0.5rem;
+
+    justify-content: center;
+
+    padding: 0.5rem;
+
 }
-

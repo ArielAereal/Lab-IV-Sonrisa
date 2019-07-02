@@ -3,9 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { PrincipalComponent } from './componentes/principal/principal.component';
+import { IngresoComponent } from './componentes/ingreso/ingreso.component';
+import { EspecialistaComponent } from './componentes/especialista/especialista.component';
+import { RecepcionistaComponent } from './componentes/recepcionista/recepcionista.component';
+import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { AdminComponent } from './componentes/admin/admin.component';
 import { ErrorComponent } from './componentes/error/error.component';
+import { VolverComponent } from './componentes/volver/volver.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -15,37 +20,37 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { IngresoComponent } from './componentes/ingreso/ingreso.component';
-import { VolverInicioComponent } from './componentes/volver-inicio/volver-inicio.component';
-import { SalaDeEsperaComponent } from './componentes/sala-de-espera/sala-de-espera.component';
+import { LogoutComponent } from './componentes/logout/logout.component';
 
-import {FileUploadModule} from 'ng2-file-upload';
-
-import {auth} from 'firebase/app';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrincipalComponent,
-    ErrorComponent,
     IngresoComponent,
-    VolverInicioComponent,
-    SalaDeEsperaComponent
+    EspecialistaComponent,
+    RecepcionistaComponent,
+    ClienteComponent,
+    AdminComponent,
+    ErrorComponent,
+    VolverComponent,
+    LogoutComponent
   ],
-  //entryComponents: [SalaDeEsperaComponent],
-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase, "Clinica Buena Sonrisa"),
-    AngularFirestoreModule, 
-    AngularFireAuthModule, 
+    AngularFireModule.initializeApp(environment.firebase, 'Trabajo Práctico 2'),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
-    FileUploadModule
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
-  providers: [auth.GoogleAuthProvider],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
