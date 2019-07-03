@@ -6,17 +6,20 @@ import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms'
 
 import {Usuario} from '../../clases/usuario';
 
+import {ActivadorService} from '../../servicios/activador.service';
+
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.component.html',
   styleUrls: ['./ingreso.component.css']
 })
 
-// nav bar volver e ingresar
-
-// form validator
+// habilitar el captcha con el ng build
 
 // error de logueo
+// canActivate y rutas
+
+// nav bar volver e ingresar
 
 export class IngresoComponent implements OnInit {
 
@@ -40,15 +43,13 @@ export class IngresoComponent implements OnInit {
     clave: this.clave,
 
     // en el localhost me molesta
-    //myRecaptcha:this.myRecaptcha
+   // myRecaptcha:this.myRecaptcha
     
   });
 
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
-}
+ 
 
-  constructor(private ruter :Router, private builder: FormBuilder) { }
+  constructor(private ruter :Router, private builder: FormBuilder, private pas:ActivadorService) { }
 
   ngOnInit() {
   }
@@ -60,7 +61,9 @@ export class IngresoComponent implements OnInit {
     this.elUsuario.correo = this.ingresoForm.get('correo').value;
     this.elUsuario.clave = this.ingresoForm.get('clave').value;
 
-    console.info(this.elUsuario);
+    //console.info(this.elUsuario);
+
+    this.pas.ingreso(this.elUsuario);
 
     /*
     this.pas.ingresoUsuario(this.elUsuario)
@@ -80,8 +83,15 @@ export class IngresoComponent implements OnInit {
     */
   }
 
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+}
+
   conAd(){
     console.log("completo con Admin");
+
+    this.correo.setValue('admin@utn.com');
+    this.clave.setValue('yavaapasar');
   }
 
   conCli(){

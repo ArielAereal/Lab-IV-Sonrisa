@@ -25,6 +25,8 @@ import { LogoutComponent } from './componentes/logout/logout.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
+import {ActivadorService} from './servicios/activador.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,7 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     RecaptchaModule,
     RecaptchaFormsModule
   ],
-  providers: [],
+  providers: [ActivadorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

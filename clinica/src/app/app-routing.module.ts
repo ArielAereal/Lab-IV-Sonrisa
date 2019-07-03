@@ -9,6 +9,8 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { ErrorComponent } from './componentes/error/error.component';
 
+import {ActivadorService} from './servicios/activador.service';
+
 //{path:'', component:},
 const routes: Routes = [
   {path:'', redirectTo: 'principal', pathMatch: 'full'},
@@ -18,7 +20,7 @@ const routes: Routes = [
   {path:'recepcionista', component: RecepcionistaComponent},
   {path:'especialista', component: EspecialistaComponent},
   {path:'cliente', component: ClienteComponent},
-  {path:'administrador', component:AdminComponent},
+  {path:'administrador', component:AdminComponent, canActivate: [ActivadorService]},
 
   {path:'error', component: ErrorComponent},
   {path:'**', component: ErrorComponent}
