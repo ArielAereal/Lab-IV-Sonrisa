@@ -17,9 +17,9 @@ const routes: Routes = [
   {path: 'principal', component: PrincipalComponent, children:[
     {path:'ingreso', component: IngresoComponent}
   ]},
-  {path:'recepcionista', component: RecepcionistaComponent},
-  {path:'especialista', component: EspecialistaComponent},
-  {path:'cliente', component: ClienteComponent},
+  {path:'recepcionista', component: RecepcionistaComponent, canActivate: [ActivadorService]},
+  {path:'especialista', component: EspecialistaComponent, canActivate: [ActivadorService]},
+  {path:'cliente', component: ClienteComponent, canActivate: [ActivadorService]},
   {path:'administrador', component:AdminComponent, canActivate: [ActivadorService]},
 
   {path:'error', component: ErrorComponent},

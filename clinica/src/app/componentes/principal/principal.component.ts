@@ -8,6 +8,9 @@ import {ActivadorService} from '../../servicios/activador.service';
   styleUrls: ['./principal.component.css']
 })
 
+// habilitar el captcha con el ng build
+// en ingreso
+
 // principal navbar con las rutas 
 
 // ingreso ajustar template (navbar)

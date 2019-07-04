@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 
 import {Router} from '@angular/router';
 
@@ -8,6 +8,8 @@ import {Usuario} from '../../clases/usuario';
 
 import {ActivadorService} from '../../servicios/activador.service';
 
+import {timer, Subscription} from 'rxjs';
+
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.component.html',
@@ -16,12 +18,13 @@ import {ActivadorService} from '../../servicios/activador.service';
 
 // habilitar el captcha con el ng build
 
-// error de logueo
-// canActivate y rutas
-
-// nav bar volver e ingresar
-
 export class IngresoComponent implements OnInit {
+
+  @ViewChild('btnError') btnError : ElementRef; 
+
+  private susc : Subscription;
+
+  tic : number;
 
   myRecaptcha :FormControl = new FormControl(false);
 
@@ -54,7 +57,12 @@ export class IngresoComponent implements OnInit {
   ngOnInit() {
   }
 
+  // pido el current user
+
   Ingresar(): void{  
+
+    this.tic = 0;
+    let timers = timer(200, 50);
     
     this.elUsuario = new Usuario();
 
@@ -63,7 +71,40 @@ export class IngresoComponent implements OnInit {
 
     //console.info(this.elUsuario);
 
-    this.pas.ingreso(this.elUsuario);
+    
+    this.susc = timers.subscribe(t=>{
+      
+      this.tic = this.tic + 1;
+      
+      switch (this.tic) {
+        case 15:
+          console.log("intento de logging");
+          this.pas.ingreso(this.elUsuario);
+            break;            
+        
+        case 80: 
+            console.log("aver aver");
+            let alguien = this.pas.quienEsta();
+
+            if(alguien){
+              console.log("logueado: ",alguien.email);
+            }else{
+
+              // muestro el modal
+              console.log("confirma el error de logueo");
+              this.mostrarError();
+            }
+
+            this.susc.unsubscribe();
+
+
+        break;      
+        default:
+          break;
+      }
+
+
+    });
 
     /*
     this.pas.ingresoUsuario(this.elUsuario)
@@ -110,13 +151,13 @@ export class IngresoComponent implements OnInit {
 
   }
 
-  onScriptLoad() {
-    console.log('Google reCAPTCHA loaded and is ready for use!');    
-   
-}
+mostrarError(){
 
-onScriptError() {
-    console.log('Something went long when loading the Google reCAPTCHA')
+console.log('el intento de inicio de sesion fue fallido');
+
+this.btnError.nativeElement.click();
+
+// mostrar modal de error
 }
 
 

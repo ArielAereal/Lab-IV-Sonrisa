@@ -37,7 +37,10 @@ export class ActivadorService implements CanActivate  {
 
     this.afAuth.auth.signInWithEmailAndPassword(usuario.correo,usuario.clave)
     .then(res=>{
-      console.log('adentro', res.user.email);
+      console.log('adentro', res.user.email);      
+     
+      // ahí va
+      this.redirigir(this.ObtenerPerfil(res.user.email));
     })
     .catch(err=>{
       console.log('algo malo, ',err.message);
@@ -53,12 +56,13 @@ export class ActivadorService implements CanActivate  {
 
   }
 
-  quienEsta(){
+  quienEsta():any | void{
 
     let usr = this.afAuth.auth.currentUser;
 
     if(usr){
       console.log("está ", usr.email);
+      return usr;
     }else{
       console.log('no hay nadie');
     }
@@ -109,11 +113,13 @@ export class ActivadorService implements CanActivate  {
    
   switch (perfil) {
     case 'admin':      
+               // this.ruter.navigate(['administrador']);
                 return true;
   
     case 'cliente':
 
           if(ruta == 'cliente'){
+         //   this.ruter.navigate(['cliente']);
             return true;
           }else{
 
@@ -123,6 +129,7 @@ export class ActivadorService implements CanActivate  {
     case 'recepcionista':
         
         if(ruta == 'recepcionista'){
+       //   this.ruter.navigate(['recepcionista']);
           return true;
         }else{
 
@@ -131,6 +138,7 @@ export class ActivadorService implements CanActivate  {
       
     case 'especialista':
         if(ruta == 'especialista'){
+     //     this.ruter.navigate(['especialista']);
           return true;
         }else{
 
@@ -138,7 +146,7 @@ export class ActivadorService implements CanActivate  {
         }
       
     default:
-        this.ruter.navigate(['error']);
+       this.ruter.navigate(['error']);
       return false;     
   }
   
@@ -181,6 +189,33 @@ export class ActivadorService implements CanActivate  {
     });
 
     return elPerfil;
+  }
+
+  redirigir(perfil:string){
+
+    switch (perfil) {
+      case 'admin':      
+                  this.ruter.navigate(['administrador']);
+                  break;
+                      
+      case 'cliente':
+            
+              this.ruter.navigate(['cliente']);
+              break;            
+          
+      case 'recepcionista':         
+          
+            this.ruter.navigate(['recepcionista']);
+            break;          
+      case 'especialista':
+            this.ruter.navigate(['especialista']);
+          
+            break;
+      default:
+          this.ruter.navigate(['error']);
+          break;
+    }
+    
   }
 
 }// servicio
