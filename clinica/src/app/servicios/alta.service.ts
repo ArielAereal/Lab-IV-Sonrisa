@@ -54,10 +54,10 @@ export class AltaService {
  
   altaTurno(turno:any){
 
-    this.db.collection('inscripciones').add({
+    this.db.collection('turnos').add({
 
       'correo' : turno.correo,
-      'materia' : turno.materia
+      'turno' : turno.turno
 
     })
     .then(ref=>{

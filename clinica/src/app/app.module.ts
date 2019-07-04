@@ -30,6 +30,7 @@ import {ActivadorService} from './servicios/activador.service';
 import { AltaMComponent } from './componentes/alta-m/alta-m.component';
 
 import {AltaService} from './servicios/alta.service';
+import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {AltaService} from './servicios/alta.service';
     ErrorComponent,
     VolverComponent,
     LogoutComponent,
-    AltaMComponent
+    AltaMComponent,
+    PedirTurnoComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import {finalize} from 'rxjs/operators';
 
 import {Observable } from 'rxjs';
 
-
+// borrar los campos luego del alta
 
 @Component({
   selector: 'app-alta-m',
@@ -84,8 +84,7 @@ export class AltaMComponent implements OnInit {
     const fileRef = this.storage.ref(this.unUsuario.correo);
 
     // on file change
-
-    // algo rompe
+    
     const task = this.storage.upload(this.unUsuario.rutaF, this.archivo);
 
     task.snapshotChanges().pipe(

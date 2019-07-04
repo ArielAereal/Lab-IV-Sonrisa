@@ -12,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 
 // ve los turnos pedidos
 
+// validar turno formValidator
+
 
 export class ClienteComponent implements OnInit {
 

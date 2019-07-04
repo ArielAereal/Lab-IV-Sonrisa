@@ -8,6 +8,8 @@ import {ActivadorService} from '../../servicios/activador.service';
   styleUrls: ['./principal.component.css']
 })
 
+// el cliente pide turnos
+
 // habilitar el captcha con el ng build
 // en ingreso
 

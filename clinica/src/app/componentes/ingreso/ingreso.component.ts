@@ -46,7 +46,7 @@ export class IngresoComponent implements OnInit {
     clave: this.clave,
 
     // en el localhost me molesta
-  // myRecaptcha:this.myRecaptcha
+   // myRecaptcha:this.myRecaptcha
     
   });
 
@@ -144,13 +144,16 @@ export class IngresoComponent implements OnInit {
 
   conEs(){
 
-    console.log("completo con Especialista");
+    
+    this.correo.setValue('bruno@utn.com');
+    this.clave.setValue('elPeleSer');
 
   }
 
   conRe(){
 
-    console.log("completo con Recepcionista");
+    this.correo.setValue('ramon@utn.com');
+    this.clave.setValue('nuevoSerViejo');
 
   }
 

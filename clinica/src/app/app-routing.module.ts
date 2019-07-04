@@ -13,6 +13,8 @@ import {ActivadorService} from './servicios/activador.service';
 
 import { AltaMComponent } from './componentes/alta-m/alta-m.component';
 
+import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.component';
+
 //{path:'', component:},
 const routes: Routes = [
   {path:'', redirectTo: 'principal', pathMatch: 'full'},
@@ -21,7 +23,9 @@ const routes: Routes = [
   ]},
   {path:'recepcionista', component: RecepcionistaComponent, canActivate: [ActivadorService]},
   {path:'especialista', component: EspecialistaComponent, canActivate: [ActivadorService]},
-  {path:'cliente', component: ClienteComponent, canActivate: [ActivadorService]},
+  {path:'cliente', component: ClienteComponent, canActivate: [ActivadorService], children:[
+    {path:'pedir-turno', component: PedirTurnoComponent}
+  ]},
   {path:'administrador', component:AdminComponent, canActivate: [ActivadorService], children:[
     {path:'alta', component:AltaMComponent}
   ]},
