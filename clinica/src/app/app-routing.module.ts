@@ -11,6 +11,8 @@ import { ErrorComponent } from './componentes/error/error.component';
 
 import {ActivadorService} from './servicios/activador.service';
 
+import { AltaMComponent } from './componentes/alta-m/alta-m.component';
+
 //{path:'', component:},
 const routes: Routes = [
   {path:'', redirectTo: 'principal', pathMatch: 'full'},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path:'recepcionista', component: RecepcionistaComponent, canActivate: [ActivadorService]},
   {path:'especialista', component: EspecialistaComponent, canActivate: [ActivadorService]},
   {path:'cliente', component: ClienteComponent, canActivate: [ActivadorService]},
-  {path:'administrador', component:AdminComponent, canActivate: [ActivadorService]},
+  {path:'administrador', component:AdminComponent, canActivate: [ActivadorService], children:[
+    {path:'alta', component:AltaMComponent}
+  ]},
 
   {path:'error', component: ErrorComponent},
   {path:'**', component: ErrorComponent}

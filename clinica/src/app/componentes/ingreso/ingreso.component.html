@@ -21,7 +21,12 @@
 </div>
 
 <div class="container">
+
+    <h3>Volver y botones de autocompletar</h3>
+
   <app-volver></app-volver>
+
+
 
   <button class="btn btn-lg btn-info" (click)='conAd()'>Admin</button>
   <button class="btn btn-lg btn-info"(click)='conCli()'>Cliente</button>
@@ -30,14 +35,14 @@
 </div>
 
 <div class="container h-100 bg-1">
-  <div class="container d-flex justify-content-center h-100">
+  <div class="d-flex justify-content-center h-100">
 
   <form [formGroup]="ingresoForm" class="form-signin container modal-content animate" (ngSubmit)="Ingresar()" >
     <div class="row">
       <div class="col-3">
       </div>
 
-      <div class="col container justify-content-center">
+      <div class="col justify-content-center">
         <img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/craneo.jpg" alt="" width="72" height="72">
       </div>
 

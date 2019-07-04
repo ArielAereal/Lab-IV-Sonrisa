@@ -32,12 +32,12 @@ export class IngresoComponent implements OnInit {
 
   correo= new FormControl('',[
     Validators.required,
-    Validators.minLength(3)
+    Validators.email
   ]);
 
   clave= new FormControl('',[
     Validators.required,
-    Validators.minLength(3)
+    Validators.minLength(6)
   ]); 
 
   ingresoForm: FormGroup = this.builder.group({
@@ -46,7 +46,7 @@ export class IngresoComponent implements OnInit {
     clave: this.clave,
 
     // en el localhost me molesta
-   // myRecaptcha:this.myRecaptcha
+  // myRecaptcha:this.myRecaptcha
     
   });
 
@@ -77,12 +77,12 @@ export class IngresoComponent implements OnInit {
       this.tic = this.tic + 1;
       
       switch (this.tic) {
-        case 15:
+        case 5:
           console.log("intento de logging");
           this.pas.ingreso(this.elUsuario);
             break;            
         
-        case 80: 
+        case 70: 
             console.log("aver aver");
             let alguien = this.pas.quienEsta();
 
@@ -93,6 +93,9 @@ export class IngresoComponent implements OnInit {
               // muestro el modal
               console.log("confirma el error de logueo");
               this.mostrarError();
+
+              this.correo.setValue('');
+              this.clave.setValue('');
             }
 
             this.susc.unsubscribe();
@@ -129,14 +132,14 @@ export class IngresoComponent implements OnInit {
 }
 
   conAd(){
-    console.log("completo con Admin");
-
     this.correo.setValue('admin@utn.com');
     this.clave.setValue('yavaapasar');
   }
 
   conCli(){
-    console.log("completo con Cliente");
+    
+    this.correo.setValue('cliente1@utn.com');
+    this.clave.setValue('nuevaguinea');
       }
 
   conEs(){

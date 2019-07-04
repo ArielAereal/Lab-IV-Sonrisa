@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
+// listado de usuarios
+
 export class AdminComponent implements OnInit {
 
   constructor() { }

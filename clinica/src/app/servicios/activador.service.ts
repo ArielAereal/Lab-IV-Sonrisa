@@ -155,6 +155,8 @@ export class ActivadorService implements CanActivate  {
   ObtenerUsuarios(){
     this.dbUsuarios.forEach(element => {
 
+      this.todosLosUsuarios = [];
+
       //console.info(element);
 
       element.forEach(usuario => {
@@ -168,6 +170,7 @@ export class ActivadorService implements CanActivate  {
         
       });
 
+      // repite los usuarios ? 
       console.info(this.todosLosUsuarios);
       
     });

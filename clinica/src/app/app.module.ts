@@ -16,7 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -26,6 +26,10 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import {ActivadorService} from './servicios/activador.service';
+
+import { AltaMComponent } from './componentes/alta-m/alta-m.component';
+
+import {AltaService} from './servicios/alta.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import {ActivadorService} from './servicios/activador.service';
     AdminComponent,
     ErrorComponent,
     VolverComponent,
-    LogoutComponent
+    LogoutComponent,
+    AltaMComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,7 @@ import {ActivadorService} from './servicios/activador.service';
     RecaptchaModule,
     RecaptchaFormsModule
   ],
-  providers: [ActivadorService],
+  providers: [ActivadorService,AltaService, { provide: StorageBucket, useValue: 'clinicabuenas.appspot.com' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
