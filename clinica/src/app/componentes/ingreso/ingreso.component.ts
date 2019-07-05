@@ -46,7 +46,7 @@ export class IngresoComponent implements OnInit {
     clave: this.clave,
 
     // en el localhost me molesta
-   // myRecaptcha:this.myRecaptcha
+   //myRecaptcha:this.myRecaptcha
     
   });
 
