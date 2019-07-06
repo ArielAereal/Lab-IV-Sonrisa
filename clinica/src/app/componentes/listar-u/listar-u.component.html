@@ -1,0 +1,25 @@
+<div class="container">
+  <h3 class="text-center">Listado de Usuarios</h3> 
+     
+    <table class="table table-striped text-center table-dark ">
+        <thead>
+          <tr class="text-left">               
+            <th>Correo</th>
+            <th>Perfil</th>
+            <th>Foto</th>            
+          </tr>
+        </thead>
+        
+        <tbody>
+
+          <tr class="text-left" *ngFor = "let usr of this.usuarioYfoto">                        
+              <td>{{usr.correo}}</td>
+              <td>{{usr.perfil}}</td>
+              <td><img class="mb-4 img-thumbnail img-fluid img-responsive" [src]='usr.rutaF | async' alt="" width="80" height="80"></td>
+            
+         
+          <tr>    
+        </tbody>      
+      </table>    
+
+</div>

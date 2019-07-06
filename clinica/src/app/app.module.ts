@@ -31,6 +31,8 @@ import { AltaMComponent } from './componentes/alta-m/alta-m.component';
 
 import {AltaService} from './servicios/alta.service';
 import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.component';
+import { ListarUComponent } from './componentes/listar-u/listar-u.component';
+import { DetalleUComponent } from './componentes/detalle-u/detalle-u.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.compo
     VolverComponent,
     LogoutComponent,
     AltaMComponent,
-    PedirTurnoComponent
+    PedirTurnoComponent,
+    ListarUComponent,
+    DetalleUComponent
   ],
   imports: [
     BrowserModule,

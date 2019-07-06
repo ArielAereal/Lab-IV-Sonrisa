@@ -15,19 +15,20 @@ import { AltaMComponent } from './componentes/alta-m/alta-m.component';
 
 import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.component';
 
+import { ListarUComponent } from './componentes/listar-u/listar-u.component';
+
 //{path:'', component:},
 const routes: Routes = [
-  {path:'', redirectTo: 'principal', pathMatch: 'full'},
-  {path: 'principal', component: PrincipalComponent, children:[
-    {path:'ingreso', component: IngresoComponent}
-  ]},
+  {path:'', redirectTo: 'ingreso', pathMatch: 'full'}, 
+  {path:'ingreso', component: IngresoComponent}, 
   {path:'recepcionista', component: RecepcionistaComponent, canActivate: [ActivadorService]},
   {path:'especialista', component: EspecialistaComponent, canActivate: [ActivadorService]},
   {path:'cliente', component: ClienteComponent, canActivate: [ActivadorService], children:[
     {path:'pedir-turno', component: PedirTurnoComponent}
   ]},
   {path:'administrador', component:AdminComponent, canActivate: [ActivadorService], children:[
-    {path:'alta', component:AltaMComponent}
+    {path:'alta', component:AltaMComponent},
+    {path: 'listado', component: ListarUComponent}
   ]},
 
   {path:'error', component: ErrorComponent},

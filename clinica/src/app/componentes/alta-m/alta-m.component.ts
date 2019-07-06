@@ -85,21 +85,25 @@ export class AltaMComponent implements OnInit {
 
     // on file change
     
-    const task = this.storage.upload(this.unUsuario.rutaF, this.archivo);
+    if(typeof(this.unUsuario.rutaF)=='string'){
 
-    task.snapshotChanges().pipe(
-      finalize(() => {this.downloadURL = fileRef.getDownloadURL();
-      console.info(this.downloadURL);} )
-   )
-  .subscribe();
+      const task = this.storage.upload(this.unUsuario.rutaF, this.archivo);
+      task.snapshotChanges().pipe(
+        finalize(() => {this.downloadURL = fileRef.getDownloadURL();
+        console.info(this.downloadURL);} )
+     )
+    .subscribe();
+  
+      this.as.altaUsuario(this.unUsuario); 
+    }
 
-    this.as.altaUsuario(this.unUsuario); 
+
 
 
 
 
     // ver output
-   this.tabla.emit();
+//   this.tabla.emit();
 
   }
 

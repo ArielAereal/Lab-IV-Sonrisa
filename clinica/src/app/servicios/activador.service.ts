@@ -61,7 +61,7 @@ export class ActivadorService implements CanActivate  {
     let usr = this.afAuth.auth.currentUser;
 
     if(usr){
-      console.log("está ", usr.email);
+    //  console.log("está ", usr.email);
       return usr;
     }else{
       console.log('no hay nadie');
@@ -166,6 +166,13 @@ export class ActivadorService implements CanActivate  {
         unUsr.correo = usuario.correo;
         unUsr.perfil = usuario.perfil;
 
+        if(usuario.foto == undefined){
+          unUsr.rutaF = '';
+        }else{
+
+          unUsr.rutaF = usuario.foto;
+        }
+
         this.todosLosUsuarios.push(unUsr);
         
       });
@@ -219,6 +226,6 @@ export class ActivadorService implements CanActivate  {
           break;
     }
     
-  }
+  } 
 
 }// servicio

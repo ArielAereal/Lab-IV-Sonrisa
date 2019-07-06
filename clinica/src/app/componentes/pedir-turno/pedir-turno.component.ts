@@ -12,6 +12,11 @@ import * as firebase from 'firebase/app';
   templateUrl: './pedir-turno.component.html',
   styleUrls: ['./pedir-turno.component.css']
 })
+
+// from validator (obligatorio)
+
+// elegir especialista... ver
+
 export class PedirTurnoComponent implements OnInit {
 
   tt: firebase.firestore.Timestamp;

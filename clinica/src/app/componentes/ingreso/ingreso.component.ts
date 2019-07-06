@@ -18,6 +18,16 @@ import {timer, Subscription} from 'rxjs';
 
 // habilitar el captcha con el ng build
 
+
+// ingreso ajustar template (navbar)
+
+/**
+ // el cliente pide turnos (validar y seleccionar profesional etc.)
+ * ser atendido por el profesinal (cambia el estado del turno)
+ * el usuario puede ver la reseña del profesional (el profesional escribe una reseña al cambiar el estado de solicitado a atendido o algo asi)
+ * el usuario puede cargar una encuesta de satisfaccion (el turno finalizado permite al cliente escribir una encuesta)
+ */
+
 export class IngresoComponent implements OnInit {
 
   @ViewChild('btnError') btnError : ElementRef; 
