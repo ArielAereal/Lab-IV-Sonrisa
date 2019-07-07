@@ -8,20 +8,6 @@ import {ActivadorService} from '../../servicios/activador.service';
   styleUrls: ['./principal.component.css']
 })
 
-// el cliente pide turnos
-
-// habilitar el captcha con el ng build
-// en ingreso
-
-// principal navbar con las rutas 
-
-// ingreso ajustar template (navbar)
-
-// servicio canActivate y rutas
-// error de logueo
-
-// esconder el boton ingresar cuando clickea en la ruta
-
 export class PrincipalComponent implements OnInit {
 
 
@@ -29,7 +15,7 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit() {
 
-    this.pas.quienEsta();
+  //  this.pas.quienEsta();
 
     
   }

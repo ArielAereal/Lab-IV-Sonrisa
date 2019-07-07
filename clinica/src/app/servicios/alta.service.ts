@@ -6,6 +6,8 @@ import {Usuario} from '../clases/usuario';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
+import {Turno} from '../clases/turno';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,15 +23,9 @@ export class AltaService {
 
       // crear el reflejo en el firestore
       this.altaCloud(unUsuario);
-
-      // ver o subir el cloud imagen
-     
-
-
     })
     .catch(err=>{
 
-      // revisar este error (si hace falta)
       Promise.reject(err);
     });
 
@@ -52,12 +48,13 @@ export class AltaService {
   });
   }  
  
-  altaTurno(turno:any){
+  altaTurno(turno:Turno){
 
     this.db.collection('turnos').add({
 
       'correo' : turno.correo,
-      'turno' : turno.turno
+      'turno' : turno.turno,
+      'especiaista' : turno.especialista
 
     })
     .then(ref=>{

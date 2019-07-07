@@ -6,6 +6,11 @@ import {ActivadorService} from '../../servicios/activador.service';
 
 import * as firebase from 'firebase/app';
 
+import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import {Turno} from '../../clases/turno';
+import {Usuario} from '../../clases/usuario';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pedir-turno',
@@ -13,48 +18,72 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./pedir-turno.component.css']
 })
 
-// from validator (obligatorio)
+// traer usuairos, ya los tengo en el activaor, pedir todos loos esppecialistas
 
-// elegir especialista... ver
+// y cargar el select
 
-export class PedirTurnoComponent implements OnInit {
+export class PedirTurnoComponent implements OnInit {  
 
-  tt: firebase.firestore.Timestamp;
+  especActivos: Usuario[];
 
-  turno:any;
+  turno: Turno;  
 
-  mail:string;
+  especi:string;
 
-  constructor(private as : AltaService,private act : ActivadorService) {
+  especialista = new FormControl('', [
+    Validators.required,
+   
+  ]);
 
-    
-    
-    
-    
-    
+
+  fecha = new FormControl('', [
+    Validators.required
+  ]);
+
+  TurnoForm: FormGroup = this.builder.group({
+
+    especialista: this.especialista,
+    fecha: this.fecha
+
+  });
+
+  // cargar el select con los especialistas que existan
+
+  constructor(private as : AltaService,private act : ActivadorService, private builder: FormBuilder) {
   }
   
   ngOnInit() {
+    this.especActivos = new Array();
+    this.cargarSelect();
+    this.turno = new Turno();
   }
   
   pedirTurno(){
     let usr = this.act.afAuth.auth.currentUser;
 
     if(usr){
-
-      this.mail =  usr.email;
+      this.turno.correo =  usr.email;
     }
 
 
-    this.tt = firebase.firestore.Timestamp.fromDate(new Date(this.turno));
+    this.turno.turno = firebase.firestore.Timestamp.fromDate(new Date(this.TurnoForm.get('fecha').value));   
+    
+    this.turno.especialista = this.TurnoForm.get('especialista').value;   
 
-   // console.info(this.tt);
+   // console.info(this.turno);
 
-   let turn : any = {'turno' : this.tt, 'correo' : this.mail};
+    this.as.altaTurno(this.turno);
 
-   //console.info(turn);
-    this.as.altaTurno(turn);
+  }
 
+  cargarSelect(){
+    
+    this.especActivos = this.act.todosLosUsuarios.filter(espe=>{
+
+      return espe.perfil == 'especialista';
+    });
+
+    console.info(this.especActivos);
   }
 
 }

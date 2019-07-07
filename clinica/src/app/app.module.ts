@@ -33,6 +33,7 @@ import {AltaService} from './servicios/alta.service';
 import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.component';
 import { ListarUComponent } from './componentes/listar-u/listar-u.component';
 import { DetalleUComponent } from './componentes/detalle-u/detalle-u.component';
+import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DetalleUComponent } from './componentes/detalle-u/detalle-u.component';
     AltaMComponent,
     PedirTurnoComponent,
     ListarUComponent,
-    DetalleUComponent
+    DetalleUComponent,
+    MisTurnosComponent
   ],
   imports: [
     BrowserModule,

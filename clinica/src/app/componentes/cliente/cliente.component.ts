@@ -6,14 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cliente.component.css']
 })
 
-// que el cliente cuando se loguea vea su foto
-
-// pedir turno y seleccionar especialista
-
 // ve los turnos pedidos
 
-// validar turno formValidator
-
+// el componente esta, crear la ruta y la tabla
 
 export class ClienteComponent implements OnInit {
 

@@ -1,12 +1,53 @@
 
+<div class="mb-3 d-flex justify-content-center form_container cont">
 
-<div class="container">
+    <!-- <select required class='form-control' name="especialista" [(ngModel)]='especi'>
+      <option *ngFor ='let espec of this.especActivos'  value="espec.correo">{{espec.correo}}</option> 
+      </select>                       -->
 
-  <h3>Pedir un turno</h3>
+  <form [formGroup]="TurnoForm" class=" container modal-content animate" (ngSubmit)="pedirTurno()">
 
-  <input type="datetime-local" [(ngModel)] = 'this.turno'>
+    <div class="input-group mb-3">   
+      <div class="container-fluid">    
+          <h3 class="font-italic text-center bg-1">Pedir un turno</h3>        
+      </div>         
 
-  <button class="btn btn-lg btn-success"  (click)='pedirTurno()'>Confirmar</button>
+      <div class="input-group-append">
+          <label for="especialista">Especialista</label>
+              <div class="input-group">                   
+                  <select [formControl]='especialista' class='form-control' name="especialista">
+                      <option *ngFor ='let espec of this.especActivos'  value="{{espec.correo}}">{{espec.correo}}</option> 
+                      </select>     
+                 
+          </div>                             
+        </div> 
+
+      <div class="input-group-append">           
+          <label for="turno">Fecha y Hora</label>
+          <div class="input-group">
+              <input name = 'turno' type="datetime-local" [formControl] = 'fecha'>
+        </div>    
+
+      </div>      
+      
+    </div>    
+    
+    <button type="submit" class="altabtn btn btn-md btn-danger" [disabled]="!TurnoForm.valid">Solicitar</button>
+    
+              
+    
+              
+</form>   
+
+         
+          
+            
+</div>
+
+
+
+
+ 
+
   
 
-</div>
