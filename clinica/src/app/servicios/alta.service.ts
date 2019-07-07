@@ -50,11 +50,18 @@ export class AltaService {
  
   altaTurno(turno:Turno){
 
-    this.db.collection('turnos').add({
+    // el nombre del documento
+    // fecha en millis y en string
+    // + paciente
+
+    let documento = turno.correo + turno.turno.toMillis().toString();
+
+    this.db.collection('turnos').doc(documento).set({
 
       'correo' : turno.correo,
       'turno' : turno.turno,
-      'especiaista' : turno.especialista
+      'especialista' : turno.especialista,
+      'estado' : turno.estado
 
     })
     .then(ref=>{

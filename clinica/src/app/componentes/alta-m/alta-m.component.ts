@@ -12,6 +12,9 @@ import {finalize} from 'rxjs/operators';
 import {Observable } from 'rxjs';
 
 // borrar los campos luego del alta
+// y o navegar, o pop up, etc.
+
+
 
 @Component({
   selector: 'app-alta-m',

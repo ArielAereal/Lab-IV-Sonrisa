@@ -18,15 +18,40 @@ import {timer, Subscription} from 'rxjs';
 
 // habilitar el captcha con el ng build
 
+/**
+ * listado de usuario y contraseña
+ * 
+ * admin
+ * cliente1
+ * bruno especialista
+ * ramon recepcionista
+ * 
+ * (abajo)
+ * 
+ * miguel@utn.com especialista, pass miNuevoSer
+ * 
+ * cliente2@utn.com cliente, pass elverCerveza
+ * 
+ * cliente1 
+ * cliente1@utn.com
+    nuevaguinea
+ */
+
 
 // ingreso ajustar template (navbar)
-
-// el cliente ve sus turnos pedidos
 
 // el profesional ve sus turnos, y el estado. Puede cambiarlos a finalizado
 // y escribe una reseña que puede ver el cliente
 
-// agregar estado a la clase turno (solicitado, finalizado, cancelado)
+// el profesional ve sus turnos
+// el profesional los modifica y agrega una reseña
+
+// el cliente puede ver la reseña
+
+// el cliente carga una encuesta de satisfaccion
+// vuelve a modificar el turno y agrega un atributo
+
+// agregar estado a la clase turno (solicitado, finalizado, (((cancelado))))
 // y el atributo resenia
 
 /**
@@ -64,7 +89,7 @@ export class IngresoComponent implements OnInit {
 
     // en el localhost me molesta
     
-   //myRecaptcha:this.myRecaptcha
+    myRecaptcha:this.myRecaptcha
     
   });
 
@@ -156,8 +181,8 @@ export class IngresoComponent implements OnInit {
 
   conCli(){
     
-    this.correo.setValue('cliente1@utn.com');
-    this.clave.setValue('nuevaguinea');
+    this.correo.setValue('cliente2@utn.com');
+    this.clave.setValue('elverCerveza');
       }
 
   conEs(){

@@ -15,10 +15,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-//habilitar todas las rutas
-
-// la barra de navegacion para las rutas
-
 export class ActivadorService implements CanActivate  {
 
   dbUsuarios: Observable<any[]>;
@@ -33,6 +29,7 @@ export class ActivadorService implements CanActivate  {
 
   }
 
+  //login
   ingreso(usuario:Usuario):void{
 
     this.afAuth.auth.signInWithEmailAndPassword(usuario.correo,usuario.clave)
@@ -48,6 +45,7 @@ export class ActivadorService implements CanActivate  {
 
   }
 
+  //logout
   salida(){
 
     this.afAuth.auth.signOut();
@@ -56,6 +54,7 @@ export class ActivadorService implements CanActivate  {
 
   }
 
+  //return currentUser
   quienEsta():any | void{
 
     let usr = this.afAuth.auth.currentUser;
@@ -68,6 +67,7 @@ export class ActivadorService implements CanActivate  {
     }
   }
   
+  //canA
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean>{  
 
     /*
@@ -108,6 +108,7 @@ export class ActivadorService implements CanActivate  {
    
   } // canActivate
 
+  //permite al usuario ver solamente lo de su propio coso
   dividirAguas(perfil:string, ruta:string):boolean{
   
    
@@ -150,8 +151,9 @@ export class ActivadorService implements CanActivate  {
       return false;     
   }
   
-  } // redirecciona dividirAguas
+  } //  dividirAguas
 
+  // todos los usuarios de la db
   ObtenerUsuarios(){
     this.dbUsuarios.forEach(element => {
 
@@ -183,6 +185,7 @@ export class ActivadorService implements CanActivate  {
     });
   }
 
+  //el perfil segun el correo
   ObtenerPerfil(correo:string):string{    
 
     let elPerfil:string = '';
@@ -201,6 +204,7 @@ export class ActivadorService implements CanActivate  {
     return elPerfil;
   }
 
+  //redirige al usuario a su home
   redirigir(perfil:string){
 
     switch (perfil) {
@@ -227,5 +231,7 @@ export class ActivadorService implements CanActivate  {
     }
     
   } 
+
+
 
 }// servicio

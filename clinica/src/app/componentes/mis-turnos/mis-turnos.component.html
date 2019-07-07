@@ -1,3 +1,46 @@
-<p>
-  mis-turnos works!
-</p>
+<h3 class="text-left">Mis Turnos</h3> 
+     
+        <table class="table table-responsive table-striped text-center table-dark   w-auto table-fixed">
+        <thead>
+          <tr class="text-left">                           
+            <th >Fecha</th>
+            <th class='th-lg'>Especialista</th>            
+            <th class='th-lg'>Estado</th>   
+            <th class='th-lg'>Ver Reseña</th>  
+          </tr>
+        </thead>
+        
+        <tbody>
+
+          <tr class="text-left" *ngFor = "let turn of this.turnosDelCliente">                        
+              <td>{{turn.turno.toDate()}}</td>
+              <td>{{turn.especialista}}</td>
+              <td>{{turn.estado}}</td>
+              <td><button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#res"(click)='verRes(turn)'>Reseña</button></td>
+         
+         
+          <tr>    
+        </tbody>      
+      </table>    
+
+
+<!-- <button hidden #btnError class="btn btn-warning btn-lg" data-toggle="modal" data-target="#errorM" ></button> -->
+
+<div class="modal" id='res' tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">La reseña del profesional</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{reseniaActiva}}</p>
+      </div>
+      <div class="modal-footer">        
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

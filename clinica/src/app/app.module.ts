@@ -35,6 +35,8 @@ import { ListarUComponent } from './componentes/listar-u/listar-u.component';
 import { DetalleUComponent } from './componentes/detalle-u/detalle-u.component';
 import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.component';
 
+import {TurnosService} from './servicios/turnos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +67,7 @@ import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.componen
     RecaptchaModule,
     RecaptchaFormsModule
   ],
-  providers: [ActivadorService,AltaService, { provide: StorageBucket, useValue: 'clinicabuenas.appspot.com' }],
+  providers: [ActivadorService,AltaService, { provide: StorageBucket, useValue: 'clinicabuenas.appspot.com' }, TurnosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

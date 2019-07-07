@@ -10,7 +10,6 @@ import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms'
 
 import {Turno} from '../../clases/turno';
 import {Usuario} from '../../clases/usuario';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pedir-turno',
@@ -18,9 +17,14 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./pedir-turno.component.css']
 })
 
-// traer usuairos, ya los tengo en el activaor, pedir todos loos esppecialistas
+// borrar los campos luego del alta
+// y o navegar, o pop up, etc.
 
-// y cargar el select
+// los ingresos de turnos van con nombre del documento
+// para poder modificar su reseña luego
+
+// correo+fecha.tomillis.tostring
+
 
 export class PedirTurnoComponent implements OnInit {  
 
@@ -68,12 +72,12 @@ export class PedirTurnoComponent implements OnInit {
 
     this.turno.turno = firebase.firestore.Timestamp.fromDate(new Date(this.TurnoForm.get('fecha').value));   
     
-    this.turno.especialista = this.TurnoForm.get('especialista').value;   
+    this.turno.especialista = this.TurnoForm.get('especialista').value;      
 
-   // console.info(this.turno);
+   this.turno.estado = 'solicitado';
 
     this.as.altaTurno(this.turno);
-
+    
   }
 
   cargarSelect(){
