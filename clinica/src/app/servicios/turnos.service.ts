@@ -34,7 +34,8 @@ export class TurnosService {
         unTurno.correo = turno.correo;
         unTurno.especialista = turno.especialista;         
         unTurno.estado = turno.estado;
-        unTurno.turno = turno.turno
+        unTurno.turno = turno.turno;
+        unTurno.res = turno.res;
 
         this.todosLosTurnos.push(unTurno);
         
@@ -44,5 +45,26 @@ export class TurnosService {
       
     });
 
+  }
+
+  modificarRes(turno:Turno){
+
+    let documento = turno.correo + turno.turno.toMillis().toString();
+
+    this.db.collection('turnos').doc(documento).update({      
+            
+      'estado' : turno.estado,
+      'res' : turno.res
+
+    })
+    .then(ref=>{
+      console.log('turno hecho');
+     // console.info(ref.id);
+    })
+    .catch(err=>{
+  
+      // revisar este error (si hace falta)
+      Promise.reject(err);
+    });
   }
 }

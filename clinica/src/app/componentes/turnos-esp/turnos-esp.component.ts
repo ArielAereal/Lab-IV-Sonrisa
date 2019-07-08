@@ -8,32 +8,29 @@ import {timer, Subscription} from 'rxjs';
 
 import {ActivadorService} from '../../servicios/activador.service';
 
-
 @Component({
-  selector: 'app-mis-turnos',
-  templateUrl: './mis-turnos.component.html',
-  styleUrls: ['./mis-turnos.component.css']
+  selector: 'app-turnos-esp',
+  templateUrl: './turnos-esp.component.html',
+  styleUrls: ['./turnos-esp.component.css']
 })
+export class TurnosEspComponent implements OnInit {
 
-export class MisTurnosComponent implements OnInit {
+  resen:string;
 
-  habilitarEnc:boolean = false;
+  turnoAModificar:Turno;
 
-  reseniaActiva:string = 'Solamente se ven reseñas de turnos en estado finalizado';
+  turnosDelEsp:Turno[];
 
   private susc : Subscription;
 
   tic : number;
-
-  turnosDelCliente:Turno[];
-
   constructor(private tuse:TurnosService, private pas:ActivadorService) { }
 
-
   ngOnInit() {
-    this.turnosDelCliente = new Array();
+    this.turnosDelEsp = new Array();
     this.timerSuscribe();
   }
+
 
   timerSuscribe(){
 
@@ -52,7 +49,7 @@ export class MisTurnosComponent implements OnInit {
         
         case 60: 
             console.log("aver aver");
-          //  console.info(this.tuse.todosLosTurnos);        
+            console.info(this.tuse.todosLosTurnos);        
             let alguien = this.pas.quienEsta();
 
             if(alguien){
@@ -61,10 +58,11 @@ export class MisTurnosComponent implements OnInit {
               console.log("todavia no");
             }
 
-            this.turnosDelCliente = this.tuse.todosLosTurnos.filter(turno=>{
-              return turno.correo == alguien.email;
+            this.turnosDelEsp = this.tuse.todosLosTurnos.filter(turno=>{
+              return turno.especialista == alguien.email;
             });
 
+            console.info(this.turnosDelEsp);
             this.susc.unsubscribe();
             break;      
         default:
@@ -75,28 +73,34 @@ export class MisTurnosComponent implements OnInit {
 
   }
 
-  // no se, anda bien...
-  verRes(turno:Turno){   
+finalizarTurno(turno:Turno){
 
-    this.habilitarEnc = false;
-    
-    this.reseniaActiva = 'Solamente se ven reseñas de turnos en estado finalizado';
+  // meto la validacion para el pop up, y modifico la reseña si el estado es solicitado
+ // console.info(turno);
 
-    if(turno.res != undefined)
-    {
-      if(turno.estado != 'finalizado'){
-        this.reseniaActiva = 'Solamente se ven reseñas de turnos en estado finalizado';
+  this.turnoAModificar = turno;
 
-      }else{
-        
-        this.reseniaActiva = turno.res;
-        this.habilitarEnc = true;
-      }
-
-     console.info('Ve la encuesta?',this.habilitarEnc);
-    }
-
-   
-  }
-
+  // si el turno esta finalizado que...
 }
+
+modificaBase(){
+  console.log("acá modifica el turno");
+
+  console.info (this.turnoAModificar);
+
+  this.turnoAModificar.res = this.resen;
+  this.turnoAModificar.estado = 'finalizado';
+
+  // console.info(this.turnoAModificar);
+  this.tuse.modificarRes(this.turnoAModificar);
+
+  // cerrar el pop up, mostrar otro mensaje, etc. volver al inicio
+
+  // borro el resen.
+}
+
+// turnoservice.modificarRes
+
+// modal igual al anterior
+
+} // componente turnosesp

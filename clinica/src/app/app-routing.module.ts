@@ -17,13 +17,16 @@ import { PedirTurnoComponent } from './componentes/pedir-turno/pedir-turno.compo
 
 import { ListarUComponent } from './componentes/listar-u/listar-u.component';
 import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.component';
+import { TurnosEspComponent } from './componentes/turnos-esp/turnos-esp.component';
 
 // {path:'', component:}
 const routes: Routes = [
   {path:'', redirectTo: 'ingreso', pathMatch: 'full'}, 
   {path:'ingreso', component: IngresoComponent}, 
   {path:'recepcionista', component: RecepcionistaComponent, canActivate: [ActivadorService]},
-  {path:'especialista', component: EspecialistaComponent, canActivate: [ActivadorService]},
+  {path:'especialista', component: EspecialistaComponent, canActivate: [ActivadorService], children:[
+    {path:'turnos', component: TurnosEspComponent}
+  ]},
   {path:'cliente', component: ClienteComponent, canActivate: [ActivadorService], children:[
     {path:'pedir-turno', component: PedirTurnoComponent},
    {path:'mis-turnos', component: MisTurnosComponent}

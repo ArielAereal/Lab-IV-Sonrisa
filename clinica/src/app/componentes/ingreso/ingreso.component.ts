@@ -22,7 +22,7 @@ import {timer, Subscription} from 'rxjs';
  * listado de usuario y contraseña
  * 
  * admin
- * cliente1
+ * cliente2
  * bruno especialista
  * ramon recepcionista
  * 
@@ -40,23 +40,10 @@ import {timer, Subscription} from 'rxjs';
 
 // ingreso ajustar template (navbar)
 
-// el profesional ve sus turnos, y el estado. Puede cambiarlos a finalizado
-// y escribe una reseña que puede ver el cliente
-
-// el profesional ve sus turnos
-// el profesional los modifica y agrega una reseña
-
-// el cliente puede ver la reseña
-
 // el cliente carga una encuesta de satisfaccion
-// vuelve a modificar el turno y agrega un atributo
+// coleccion aparte para encuestas, y que sea anonima
 
-// agregar estado a la clase turno (solicitado, finalizado, (((cancelado))))
-// y el atributo resenia
-
-/**
- * ser atendido por el profesinal (cambia el estado del turno)
- * el usuario puede ver la reseña del profesional (el profesional escribe una reseña al cambiar el estado de solicitado a atendido o algo asi)
+/** 
  * el usuario puede cargar una encuesta de satisfaccion (el turno finalizado permite al cliente escribir una encuesta)
  */
 
@@ -68,7 +55,9 @@ export class IngresoComponent implements OnInit {
 
   tic : number;
 
-  myRecaptcha :FormControl = new FormControl(false);
+  myRecaptcha :FormControl = new FormControl(false,[
+    Validators.required
+    ]);
 
   elUsuario:Usuario;
 
@@ -89,7 +78,7 @@ export class IngresoComponent implements OnInit {
 
     // en el localhost me molesta
     
-    myRecaptcha:this.myRecaptcha
+   // myRecaptcha:this.myRecaptcha
     
   });
 
