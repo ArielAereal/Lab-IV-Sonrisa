@@ -90,6 +90,7 @@ modificaBase(){
 
   this.turnoAModificar.res = this.resen;
   this.turnoAModificar.estado = 'finalizado';
+  this.turnoAModificar.encuesta = false;
 
   // console.info(this.turnoAModificar);
   this.tuse.modificarRes(this.turnoAModificar);

@@ -6,5 +6,5 @@ export class Turno {
     turno: firebase.firestore.Timestamp;
     estado:string;
     res:string;
-    encuesta:string;
+    encuesta:boolean;
 }

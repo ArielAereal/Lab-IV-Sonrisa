@@ -76,6 +76,8 @@ export class PedirTurnoComponent implements OnInit {
 
    this.turno.estado = 'solicitado';
 
+   this.turno.encuesta = false;
+
     this.as.altaTurno(this.turno);
     
   }

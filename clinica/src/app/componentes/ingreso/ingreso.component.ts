@@ -40,6 +40,10 @@ import {timer, Subscription} from 'rxjs';
 
 // ingreso ajustar template (navbar)
 
+// intentar con ngx-bootstrap ver el tutorial
+
+// o hacerlo feo y a mano
+
 // el cliente carga una encuesta de satisfaccion
 // coleccion aparte para encuestas, y que sea anonima
 

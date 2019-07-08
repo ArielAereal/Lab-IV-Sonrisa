@@ -8,6 +8,17 @@ import {timer, Subscription} from 'rxjs';
 
 import {ActivadorService} from '../../servicios/activador.service';
 
+// el boton encuesta habilita la encuesta arriba del listado de turnos
+
+// cuando finaliza la encuesta, modifico el turno en la base y 
+        // seteo la encuesta en true
+
+        // guardo los resultados de la encuesta para mostrarlo en algun lado
+
+        // si hace falta, y si quiero un componente aparte para la encuesta
+  // le paso el turno input
+
+  // para la encuesta, donde la muestro?
 
 @Component({
   selector: 'app-mis-turnos',
@@ -16,6 +27,10 @@ import {ActivadorService} from '../../servicios/activador.service';
 })
 
 export class MisTurnosComponent implements OnInit {
+
+  
+
+  ver:boolean = false;
 
   habilitarEnc:boolean = false;
 
@@ -90,7 +105,16 @@ export class MisTurnosComponent implements OnInit {
       }else{
         
         this.reseniaActiva = turno.res;
-        this.habilitarEnc = true;
+
+        // cuando finaliza la encuesta, modifico el turno en la base y 
+        // seteo la encuesta en true
+
+        // guardo los resultados de la encuesta para mostrarlo en algun lado
+       
+        if(turno.encuesta != true){
+
+          this.habilitarEnc = true;
+        }
       }
 
      console.info('Ve la encuesta?',this.habilitarEnc);
@@ -99,4 +123,8 @@ export class MisTurnosComponent implements OnInit {
    
   }
 
-}
+  verE(){
+    this.ver = true;
+  }
+
+} // componente

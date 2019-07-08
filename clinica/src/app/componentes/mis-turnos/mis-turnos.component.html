@@ -1,3 +1,10 @@
+
+<div *ngIf='ver' class="container">
+
+  <h1>Encuesta</h1> 
+
+</div>
+
 <h3 class="text-left">Mis Turnos</h3> 
      
         <table class="table table-responsive table-striped text-center table-dark   w-auto table-fixed">
@@ -39,10 +46,50 @@
         <p>{{reseniaActiva}}</p>
       </div>
 
-      <div *ngIf = 'habilitarEnc'><h1>Encuesta</h1></div>
+      <div *ngIf = 'habilitarEnc'><button class="btn btn-warning btn-lg"  (click) = 'verE()'>Encuesta</button></div>
       <div class="modal-footer">        
         <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- no se ve
+   <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="star-rating">
+        <span class="fa fa-star-o" data-rating="1"></span>
+        <span class="fa fa-star-o" data-rating="2"></span>
+        <span class="fa fa-star-o" data-rating="3"></span>
+        <span class="fa fa-star-o" data-rating="4"></span>
+        <span class="fa fa-star-o" data-rating="5"></span>
+        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="star-rating">
+        <span class="fa fa-star-o" data-rating="1"></span>
+        <span class="fa fa-star-o" data-rating="2"></span>
+        <span class="fa fa-star-o" data-rating="3"></span>
+        <span class="fa fa-star-o" data-rating="4"></span>
+        <span class="fa fa-star-o" data-rating="5"></span>
+        <input type="hidden" name="whatever2" class="rating-value" value="1.9">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="star-rating">
+        <span class="fa fa-star-o" data-rating="1"></span>
+        <span class="fa fa-star-o" data-rating="2"></span>
+        <span class="fa fa-star-o" data-rating="3"></span>
+        <span class="fa fa-star-o" data-rating="4"></span>
+        <span class="fa fa-star-o" data-rating="5"></span>
+        <input type="hidden" name="whatever3" class="rating-value" value="4.1">
+      </div>
+    </div>
+  </div>
+</div> -->

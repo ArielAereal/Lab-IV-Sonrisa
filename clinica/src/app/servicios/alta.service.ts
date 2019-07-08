@@ -61,7 +61,8 @@ export class AltaService {
       'correo' : turno.correo,
       'turno' : turno.turno,
       'especialista' : turno.especialista,
-      'estado' : turno.estado
+      'estado' : turno.estado,
+      'encuesta' : turno.encuesta
 
     })
     .then(ref=>{

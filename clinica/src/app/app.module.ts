@@ -37,6 +37,9 @@ import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.componen
 
 import {TurnosService} from './servicios/turnos.service';
 import { TurnosEspComponent } from './componentes/turnos-esp/turnos-esp.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+
+
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { TurnosEspComponent } from './componentes/turnos-esp/turnos-esp.componen
     ListarUComponent,
     DetalleUComponent,
     MisTurnosComponent,
-    TurnosEspComponent
+    TurnosEspComponent,
+    EncuestaComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -54,7 +54,8 @@ export class TurnosService {
     this.db.collection('turnos').doc(documento).update({      
             
       'estado' : turno.estado,
-      'res' : turno.res
+      'res' : turno.res,
+      'encuesta' : turno.encuesta
 
     })
     .then(ref=>{
