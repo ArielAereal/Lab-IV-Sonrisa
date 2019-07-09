@@ -199,11 +199,8 @@ export class ActivadorService implements CanActivate  {
 
     this.todosLosUsuarios.forEach(element => {
 
-      if(correo == element.correo){
-
-        console.log(element.perfil);        
+      if(correo == element.correo){       
         elPerfil = element.perfil;
-
       }
       
     });
@@ -229,7 +226,7 @@ export class ActivadorService implements CanActivate  {
             this.ruter.navigate(['recepcionista']);
             break;          
       case 'especialista':
-            this.ruter.navigate(['especialista']);
+            this.ruter.navigate(['especialista/turnos']);
           
             break;
       default:

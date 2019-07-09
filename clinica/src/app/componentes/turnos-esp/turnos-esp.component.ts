@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 
 import {TurnosService}from '../../servicios/turnos.service';
 
@@ -14,6 +14,8 @@ import {ActivadorService} from '../../servicios/activador.service';
   styleUrls: ['./turnos-esp.component.css']
 })
 export class TurnosEspComponent implements OnInit {
+
+  @ViewChild('btnError') btnError : ElementRef; 
 
   resen:string;
 
@@ -94,6 +96,8 @@ modificaBase(){
 
   // console.info(this.turnoAModificar);
   this.tuse.modificarRes(this.turnoAModificar);
+
+  this.btnError.nativeElement.click();
 
   // cerrar el pop up, mostrar otro mensaje, etc. volver al inicio
 

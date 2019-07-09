@@ -16,19 +16,34 @@ import {timer, Subscription} from 'rxjs';
   styleUrls: ['./ingreso.component.css']
 })
 
+// alta de usuario con foto OK
+
+// pedir turno OK
+
+// el profesional finaliza los turnos y deja su reseña OK
+
+// el cliente puede ver la reseña del profesional OK
+
+// el cliente completa una encuesta de satisfacción OK
+
 // habilitar el captcha con el ng build
+// el minimo deberia estar
+
+// prueba en la web
 
 /**
  * listado de usuario y contraseña
  * 
  * admin
+ * 
  * cliente2
- * bruno especialista
+ * miguel 
  * ramon recepcionista
  * 
  * (abajo)
  * 
  * miguel@utn.com especialista, pass miNuevoSer
+ * bruno@utn.com especialista, pass elPeleSer
  * 
  * cliente2@utn.com cliente, pass elverCerveza
  * 
@@ -37,19 +52,15 @@ import {timer, Subscription} from 'rxjs';
     nuevaguinea
  */
 
-// ordenar lista de rankings
- 
- // revision final de experiencia del usuario
 
- // revision de la funcionalidad basica
- 
- // prueba en la web
- 
- // ver de meter algun otro reporte
 
- // mejora del estilo
+// ver de meter algun otro reporte
+
+// mejora del estilo
 
 // ingreso ajustar template (navbar)
+// ordenar lista de rankings
+// ordenar turnos pedidos por fecha
 
 // ultima prueba web
 
@@ -84,7 +95,7 @@ export class IngresoComponent implements OnInit {
 
     // en el localhost me molesta
     
-   // myRecaptcha:this.myRecaptcha
+    myRecaptcha:this.myRecaptcha
     
   });
 
@@ -183,8 +194,8 @@ export class IngresoComponent implements OnInit {
   conEs(){
 
     
-    this.correo.setValue('bruno@utn.com');
-    this.clave.setValue('elPeleSer');
+    this.correo.setValue('miguel@utn.com');
+    this.clave.setValue('miNuevoSer');
 
   }
 

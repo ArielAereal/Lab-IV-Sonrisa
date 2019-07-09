@@ -18,9 +18,12 @@ import {ActivadorService} from '../../servicios/activador.service';
 
 export class MisTurnosComponent implements OnInit {
 
+  @ViewChild('btnError') btnError : ElementRef; 
+
   turnoEncuesta:Turno;
 
   @ViewChild('cierraPop') cierraPop : ElementRef; 
+  @ViewChild('cierraPopper') cierraPopper : ElementRef; 
 
   encuesta:string;
 
@@ -136,6 +139,29 @@ export class MisTurnosComponent implements OnInit {
 
     this.tuse.subirEncuesta(this.turnoEncuesta.especialista, rat);
     this.tuse.modificarRes(this.turnoEncuesta);
+
+    this.btnError.nativeElement.click();
+
+    this.tic = 0;
+    let timers = timer(200, 50);
+
+    this.susc = timers.subscribe(t=>{
+      
+      this.tic = this.tic + 1;
+      
+      switch (this.tic) {
+       
+        case 60: 
+        this.cierraPopper.nativeElement.click();
+        this.ver = false;
+            break;      
+        default:
+          break;
+      }
+
+    });
+
+
 
     // guardo el resultado de la encuesta
   }

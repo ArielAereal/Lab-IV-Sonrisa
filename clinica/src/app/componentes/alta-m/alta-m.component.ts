@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import {AltaService}from '../../servicios/alta.service';
@@ -10,6 +10,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 
 import {Observable } from 'rxjs';
+
+import {Router} from '@angular/router';
+
+import {timer, Subscription} from 'rxjs';
 
 // borrar los campos luego del alta
 // y o navegar, o pop up, etc.
@@ -24,11 +28,16 @@ import {Observable } from 'rxjs';
 
 export class AltaMComponent implements OnInit {
 
+  @ViewChild('btnError') btnError : ElementRef; 
+  @ViewChild('btnErrorb') btnErrorb : ElementRef; 
+
+  private susc : Subscription;
+
+  tic : number;
+
   unUsuario:Usuario;
 
-  downloadURL: Observable<string>;
-
-  @Output() tabla :EventEmitter<any> = new EventEmitter<any>();
+  downloadURL: Observable<string>;  
 
   perfil = new FormControl('', [
     Validators.required
@@ -63,7 +72,7 @@ export class AltaMComponent implements OnInit {
 
   archivo:any;
 
-  constructor(private builder: FormBuilder,private as : AltaService,public storage : AngularFireStorage) { }
+  constructor(private ruter: Router, private builder: FormBuilder,private as : AltaService,public storage : AngularFireStorage) { }
 
   ngOnInit(){
 
@@ -98,16 +107,39 @@ export class AltaMComponent implements OnInit {
     .subscribe();
   
       this.as.altaUsuario(this.unUsuario); 
+
+
     }
 
+    this.tic = 0;
+    let timers = timer(200, 50);
+
+    this.susc = timers.subscribe(t=>{
+      
+      this.tic = this.tic + 1;
+      
+      switch (this.tic) {
+        case 5:
+          console.log("calentando motores");          
+          this.mostrarError();
+
+          // pop up
+            break;            
+        
+        case 60:     
+            this.cerrarPup();
+          	this.ruter.navigate(['./administrador/listado']);
+            this.susc.unsubscribe();
+
+        break;      
+        default:
+          break;
+      }
 
 
+    });
 
-
-
-    // ver output
-//   this.tabla.emit();
-
+    
   }
 
   uploadFile(event){
@@ -115,6 +147,20 @@ export class AltaMComponent implements OnInit {
     // el archivo
     const file = event.target.files[0];
     this.archivo = file;
+  }
+
+  mostrarError(){
+
+    console.log('el alta de usuario fue joya');
+    
+    this.btnError.nativeElement.click();
+    
+    // mostrar modal de error
+    }
+
+  cerrarPup(){    
+    
+    this.btnErrorb.nativeElement.click();
   }
 
 } // componente

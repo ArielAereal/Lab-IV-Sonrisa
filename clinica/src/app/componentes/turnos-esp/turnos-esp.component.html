@@ -38,7 +38,7 @@
           <textarea [(ngModel)]='resen' name="" id="" cols="30" rows="10"></textarea>
         </div>
         <div class="modal-footer">        
-          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+          <button #btnError type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
           <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#errorM" (click)='modificaBase()' >Guardar</button>
 
         </div>

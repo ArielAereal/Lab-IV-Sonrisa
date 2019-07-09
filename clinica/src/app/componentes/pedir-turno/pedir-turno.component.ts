@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 
 import {AltaService} from '../../servicios/alta.service';
 
@@ -10,6 +10,10 @@ import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms'
 
 import {Turno} from '../../clases/turno';
 import {Usuario} from '../../clases/usuario';
+
+import {timer, Subscription} from 'rxjs';
+
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-pedir-turno',
@@ -29,6 +33,13 @@ import {Usuario} from '../../clases/usuario';
 
 
 export class PedirTurnoComponent implements OnInit {  
+
+    @ViewChild('btnError') btnError : ElementRef; 
+    @ViewChild('btnErrorb') btnErrorb : ElementRef; 
+
+    private susc : Subscription;
+
+    tic : number;
 
   listaPulida: any[];
 
@@ -61,7 +72,7 @@ export class PedirTurnoComponent implements OnInit {
 
   // cargar el select con los especialistas que existan
 
-  constructor(private as : AltaService,private act : ActivadorService, private builder: FormBuilder) {
+  constructor(private ruter:Router, private as : AltaService,private act : ActivadorService, private builder: FormBuilder) {
   }
   
   ngOnInit() {
@@ -95,6 +106,35 @@ export class PedirTurnoComponent implements OnInit {
    this.turno.encuesta = false;
 
     this.as.altaTurno(this.turno);
+
+    this.tic = 0;
+    let timers = timer(200, 50);
+
+    this.susc = timers.subscribe(t=>{
+      
+      this.tic = this.tic + 1;
+      
+      switch (this.tic) {
+        case 5:
+          console.log("calentando motores");          
+          this.mostrarError();
+
+          // pop up
+            break;            
+        
+        case 75:     
+
+        this.btnErrorb.nativeElement.click();
+        this.ruter.navigate(['./cliente/mis-turnos']);
+        this.susc.unsubscribe();
+
+        break;      
+        default:
+          break;
+      }
+
+
+    });
     
   }
 
@@ -134,7 +174,7 @@ export class PedirTurnoComponent implements OnInit {
 
     
     this.especActivos.forEach(element => {
-      
+      let div0:number;
       let acum:number = 0;
       let cont:number = 0;
 
@@ -151,12 +191,16 @@ export class PedirTurnoComponent implements OnInit {
         acum = acum + element.puntaje;
         cont = cont + 1;
       });
+      
+      
+      div0 = cont;
 
       if(cont == 0){
-        cont = 1;
+        div0 = 1;
       }
+
       
-      listaDeProf.push({'correo':element.correo,'promedio': (acum/cont),'total': cont});
+      listaDeProf.push({'correo':element.correo,'promedio': (acum/div0),'total': cont});
 
       
     });
@@ -175,5 +219,14 @@ export class PedirTurnoComponent implements OnInit {
 
     // de cada uno promedio y cantidad de encuestas recibidas
   }
+
+  mostrarError(){
+
+    console.log('el alta de usuario fue joya');
+    
+    this.btnError.nativeElement.click();
+    
+    // mostrar modal de error
+    }
 
 }
