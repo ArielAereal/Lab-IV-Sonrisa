@@ -17,6 +17,10 @@ import { Observable } from 'rxjs';
 
 export class ActivadorService implements CanActivate  {
 
+  todosLosPuntajes:any[];
+
+  dbPuntaje:Observable<any[]>;
+
   dbUsuarios: Observable<any[]>;
 
   todosLosUsuarios : Usuario[];
@@ -26,6 +30,9 @@ export class ActivadorService implements CanActivate  {
     this.dbUsuarios = this.db.collection('usuarios').valueChanges();
     this.todosLosUsuarios = new Array();
     this.ObtenerUsuarios();
+
+    this.dbPuntaje = this.db.collection('encuestas').valueChanges();
+    this.traerPuntos();
 
   }
 
@@ -231,6 +238,26 @@ export class ActivadorService implements CanActivate  {
     }
     
   } 
+
+  traerPuntos(){
+
+    this.dbPuntaje.forEach(element => {
+
+      this.todosLosPuntajes = [];
+
+      //console.info(element);
+
+      element.forEach(rating => {
+
+        this.todosLosPuntajes.push({'correo':rating.correo,'puntaje':rating.puntaje});
+      });
+
+      //console.info(this.todosLosPuntajes);
+
+    });
+
+
+  }
 
 
 

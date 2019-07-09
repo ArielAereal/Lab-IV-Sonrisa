@@ -1,12 +1,33 @@
 
-<h3>Mostrar los profesionales con sus puntajes</h3>
+
+<!-- <div class="container">
+  <button type="button" class="btn btn-sm btn-secondary" (click)='mostrarPuntaje()'>Ver puntajes</button>
+</div> -->
 
 
-<div class="mb-3 d-flex justify-content-center form_container cont">
+    <div class="container" *ngIf = '!ver'>
+        <h3 class="text-left">Puntaje de los Especialistas</h3> 
+             
+                <table class="table table-responsive table-striped text-center table-dark   w-auto table-fixed">
+                <thead>
+                  <tr>
+                    <th class='th-lg'>Especialista</th>            
+                    <th class='th-lg'>Puntaje</th>                       
+                    <th class='th-lg'>Cant. Encuestas</th>                       
+                  </tr>
+                </thead>
+                
+                <tbody>        
+                  <tr class="text-left" *ngFor = "let pts of this.listaPulida">      
+                      <td>{{pts.correo}}</td>
+                       <td>{{pts.promedio.toFixed(2)}}</td>
+                       <td>{{pts.total}}</td>
+                  <tr>    
+                </tbody>      
+              </table>   
+      </div>
 
-    <!-- <select required class='form-control' name="especialista" [(ngModel)]='especi'>
-      <option *ngFor ='let espec of this.especActivos'  value="espec.correo">{{espec.correo}}</option> 
-      </select>                       -->
+<div class="mb-3 d-flex justify-content-center form_container cont">  
 
   <form [formGroup]="TurnoForm" class=" container modal-content animate" (ngSubmit)="pedirTurno()">
 
@@ -36,6 +57,7 @@
     </div>    
     
     <button type="submit" class="altabtn btn btn-md btn-danger" [disabled]="!TurnoForm.valid">Solicitar</button>
+    
     
               
     

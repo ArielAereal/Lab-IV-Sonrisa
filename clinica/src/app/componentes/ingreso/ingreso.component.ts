@@ -37,13 +37,15 @@ import {timer, Subscription} from 'rxjs';
     nuevaguinea
  */
 
- // donde muestro la encuesta?
-
+// ordenar lista de rankings
+ 
  // revision final de experiencia del usuario
 
  // revision de la funcionalidad basica
-
+ 
  // prueba en la web
+ 
+ // ver de meter algun otro reporte
 
  // mejora del estilo
 
@@ -82,7 +84,7 @@ export class IngresoComponent implements OnInit {
 
     // en el localhost me molesta
     
-    myRecaptcha:this.myRecaptcha
+   // myRecaptcha:this.myRecaptcha
     
   });
 

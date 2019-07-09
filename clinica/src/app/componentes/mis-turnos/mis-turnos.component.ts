@@ -8,6 +8,8 @@ import {timer, Subscription} from 'rxjs';
 
 import {ActivadorService} from '../../servicios/activador.service';
 
+// ordenar lista de puntajes para mostrar
+
 @Component({
   selector: 'app-mis-turnos',
   templateUrl: './mis-turnos.component.html',

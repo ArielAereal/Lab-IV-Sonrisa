@@ -17,6 +17,8 @@ import {Usuario} from '../../clases/usuario';
   styleUrls: ['./pedir-turno.component.css']
 })
 
+//ordenar lista
+
 // borrar los campos luego del alta
 // y o navegar, o pop up, etc.
 
@@ -27,6 +29,12 @@ import {Usuario} from '../../clases/usuario';
 
 
 export class PedirTurnoComponent implements OnInit {  
+
+  listaPulida: any[];
+
+  ver:boolean=false;
+
+  listadoPuntajesMostrar:any[];
 
   especActivos: Usuario[];
 
@@ -57,9 +65,17 @@ export class PedirTurnoComponent implements OnInit {
   }
   
   ngOnInit() {
+
+    this.listaPulida = new Array();
     this.especActivos = new Array();
     this.cargarSelect();
     this.turno = new Turno();
+
+    this.listadoPuntajesMostrar = new Array();
+
+    console.info(this.act.todosLosPuntajes);
+
+    this.manipularObjetos();
   }
   
   pedirTurno(){
@@ -90,6 +106,74 @@ export class PedirTurnoComponent implements OnInit {
     });
 
     console.info(this.especActivos);
+  }
+
+  mostrarPuntaje(){
+    //console.info(this.act.todosLosPuntajes);
+
+  }
+
+  manipularObjetos(){
+    
+    this.listadoPuntajesMostrar = [];
+    this.act.todosLosPuntajes.forEach(element => {
+      
+      this.listadoPuntajesMostrar.push(element);
+    });
+
+    this.ordenoYpromedio(this.listadoPuntajesMostrar);
+
+
+  }
+
+  ordenoYpromedio(puntajes:any){
+
+    this.listaPulida = [];
+
+    let listaDeProf:any[] = new Array();
+
+    
+    this.especActivos.forEach(element => {
+      
+      let acum:number = 0;
+      let cont:number = 0;
+
+      // creo un tr por cada uno de estos
+      // console.info(puntajes);
+      let propios = puntajes.filter(pts=>{                
+        
+        return element.correo == pts.correo;
+      });
+      
+      // console.info(propios);
+      
+      propios.forEach(element => {
+        acum = acum + element.puntaje;
+        cont = cont + 1;
+      });
+
+      if(cont == 0){
+        cont = 1;
+      }
+      
+      listaDeProf.push({'correo':element.correo,'promedio': (acum/cont),'total': cont});
+
+      
+    });
+
+
+
+    this.listaPulida = listaDeProf;
+    
+    //this.listaPulida.sort();
+    
+    // listado de profesionales
+    // console.info(listaDeProf);
+
+
+
+
+    // de cada uno promedio y cantidad de encuestas recibidas
   }
 
 }
