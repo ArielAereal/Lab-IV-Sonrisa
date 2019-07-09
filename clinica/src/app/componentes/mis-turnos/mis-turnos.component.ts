@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import {TurnosService}from '../../servicios/turnos.service';
 
@@ -8,18 +8,6 @@ import {timer, Subscription} from 'rxjs';
 
 import {ActivadorService} from '../../servicios/activador.service';
 
-// el boton encuesta habilita la encuesta arriba del listado de turnos
-
-// cuando finaliza la encuesta, modifico el turno en la base y 
-        // seteo la encuesta en true
-
-        // guardo los resultados de la encuesta para mostrarlo en algun lado
-
-        // si hace falta, y si quiero un componente aparte para la encuesta
-  // le paso el turno input
-
-  // para la encuesta, donde la muestro?
-
 @Component({
   selector: 'app-mis-turnos',
   templateUrl: './mis-turnos.component.html',
@@ -28,7 +16,11 @@ import {ActivadorService} from '../../servicios/activador.service';
 
 export class MisTurnosComponent implements OnInit {
 
-  
+  turnoEncuesta:Turno;
+
+  @ViewChild('cierraPop') cierraPop : ElementRef; 
+
+  encuesta:string;
 
   ver:boolean = false;
 
@@ -106,13 +98,15 @@ export class MisTurnosComponent implements OnInit {
         
         this.reseniaActiva = turno.res;
 
+        console.log(turno);
+
         // cuando finaliza la encuesta, modifico el turno en la base y 
         // seteo la encuesta en true
 
         // guardo los resultados de la encuesta para mostrarlo en algun lado
        
         if(turno.encuesta != true){
-
+          this.turnoEncuesta = turno;
           this.habilitarEnc = true;
         }
       }
@@ -124,7 +118,29 @@ export class MisTurnosComponent implements OnInit {
   }
 
   verE(){
+    this.cierraPop.nativeElement.click();
     this.ver = true;
   }
 
+  guardarEncuesta(){
+
+    this.turnoEncuesta.encuesta = true;
+    console.info(this.turnoEncuesta);
+   // console.info(this.encuesta);
+
+    let rat = parseInt(this.encuesta);
+
+    console.info(rat);
+
+    this.tuse.subirEncuesta(this.turnoEncuesta.especialista, rat);
+    this.tuse.modificarRes(this.turnoEncuesta);
+
+    // guardo el resultado de la encuesta
+  }
+
+  cancelarEnc(){
+    this.encuesta = undefined;
+    this.ver = false;
+    this.turnoEncuesta = undefined;
+  }
 } // componente

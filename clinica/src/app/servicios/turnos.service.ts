@@ -10,6 +10,8 @@ import {Turno} from '../clases/turno';
 })
 export class TurnosService {
 
+  //dbEncuesta:Observable<any[]>;
+
   dbTurnos:Observable<any[]>;
 
   todosLosTurnos: Turno[];
@@ -19,6 +21,8 @@ export class TurnosService {
     this.dbTurnos = this.db.collection('turnos').valueChanges();
     this.todosLosTurnos = new Array();
     this.ObtenerTurnos();
+
+    //this.dbEncuesta = this.db.collection('')
   }
 
   ObtenerTurnos(){
@@ -36,6 +40,7 @@ export class TurnosService {
         unTurno.estado = turno.estado;
         unTurno.turno = turno.turno;
         unTurno.res = turno.res;
+        unTurno.encuesta = turno.encuesta;
 
         this.todosLosTurnos.push(unTurno);
         
@@ -59,7 +64,7 @@ export class TurnosService {
 
     })
     .then(ref=>{
-      console.log('turno hecho');
+      console.log('modificación exitosa');
      // console.info(ref.id);
     })
     .catch(err=>{
@@ -68,4 +73,22 @@ export class TurnosService {
       Promise.reject(err);
     });
   }
+
+  subirEncuesta(especialista:string, rating:number){
+     this.db.collection('encuestas').add(
+      {
+        'correo':especialista,
+        'puntaje': rating
+      }
+     ).then(ref=>{
+      console.log('encuesta exitosa');
+     // console.info(ref.id);
+    })
+    .catch(err=>{
+  
+      // revisar este error (si hace falta)
+      Promise.reject(err);
+    });;
+  }
+
 }

@@ -37,19 +37,19 @@ import {timer, Subscription} from 'rxjs';
     nuevaguinea
  */
 
+ // donde muestro la encuesta?
+
+ // revision final de experiencia del usuario
+
+ // revision de la funcionalidad basica
+
+ // prueba en la web
+
+ // mejora del estilo
 
 // ingreso ajustar template (navbar)
 
-// intentar con ngx-bootstrap ver el tutorial
-
-// o hacerlo feo y a mano
-
-// el cliente carga una encuesta de satisfaccion
-// coleccion aparte para encuestas, y que sea anonima
-
-/** 
- * el usuario puede cargar una encuesta de satisfaccion (el turno finalizado permite al cliente escribir una encuesta)
- */
+// ultima prueba web
 
 export class IngresoComponent implements OnInit {
 
@@ -82,7 +82,7 @@ export class IngresoComponent implements OnInit {
 
     // en el localhost me molesta
     
-   // myRecaptcha:this.myRecaptcha
+    myRecaptcha:this.myRecaptcha
     
   });
 

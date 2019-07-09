@@ -1,10 +1,55 @@
 
 <div *ngIf='ver' class="container">
 
-  <h1>Encuesta</h1> 
+  <h1>Encuesta de satisfacción</h1> 
+
+  <h4><i>La encuesta es anónima, solamente nosotros sabemos que fuiste vos</i> </h4>
+
+  <h3>¿A quién se parece el doctor que te atendió?</h3>  
+
+  <div class="row">
+
+    <div class="col-2">1</div>
+    <div class="col-2">2</div>
+    <div class="col-2">3</div>
+    <div class="col-2">4</div>
+    <div class="col-2">5</div>
+
+  </div>
+
+  <div class="row">
+      <div class="col-2"><input [(ngModel)]='encuesta' type= "radio"  id="" name="grupoDeRespuestas" value='1'></div>
+      <div class="col-2"><input [(ngModel)]='encuesta' type= "radio"   id="" name="grupoDeRespuestas" value='2'></div>
+      <div class="col-2"><input [(ngModel)]='encuesta' type= "radio"   id="" name="grupoDeRespuestas" value='3'></div>
+      <div class="col-2"><input [(ngModel)]='encuesta' type= "radio"   id="" name="grupoDeRespuestas" value='4'></div>
+      <div class="col-2"><input [(ngModel)]='encuesta' type= "radio"   id="" name="grupoDeRespuestas" value='5'></div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-2">Nick Riviera</div>
+    <div class="col-2">Doctor Chapatín</div>
+    <div class="col-2">Doctor House</div>
+      <div class="col-2">Facundo Manes</div>
+      <div class="col-2"> René Favaloro</div>
+
+  </div>
+
+  <div class="row">
+      <div class="col-2"><img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/nick_riviera.jpg" alt="" width="80" height="80"></div>
+      <div class="col-2"><img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/doctor_chapatin.jpg" alt="" width="80" height="80"></div>
+      <div class="col-2"><img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/doctor_house.jpg" alt="" width="80" height="80"></div>
+      <div class="col-2"><img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/facundo_manes.jpg" alt="" width="80" height="80"></div>
+      <div class="col-2"><img class="mb-4 img-thumbnail img-fluid img-responsive" src="../../../assets/imagenes/rene_favaloro.jpg" alt="" width="80" height="80"></div>
+
+  </div>
+
+  <button class="btn btn-success btn-lg"(click)='guardarEncuesta()'>Guardar</button>
+  <button class="btn btn-danger btn-lg" (click)='cancelarEnc()'>Cancelar</button>
 
 </div>
 
+<div class="container" *ngIf = '!ver'>
 <h3 class="text-left">Mis Turnos</h3> 
      
         <table class="table table-responsive table-striped text-center table-dark   w-auto table-fixed">
@@ -30,7 +75,7 @@
         </tbody>      
       </table>    
 
-
+  </div>
 <!-- <button hidden #btnError class="btn btn-warning btn-lg" data-toggle="modal" data-target="#errorM" ></button> -->
 
 <div class="modal" id='res' tabindex="-1" role="dialog">
@@ -46,9 +91,9 @@
         <p>{{reseniaActiva}}</p>
       </div>
 
-      <div *ngIf = 'habilitarEnc'><button class="btn btn-warning btn-lg"  (click) = 'verE()'>Encuesta</button></div>
+      <div *ngIf = 'habilitarEnc'><button  class="btn btn-warning btn-lg"  (click) = 'verE()'>Encuesta</button></div>
       <div class="modal-footer">        
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+        <button #cierraPop type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
