@@ -72,7 +72,7 @@ export class IngresoComponent implements OnInit {
 
   tic : number;
 
-  myRecaptcha :FormControl = new FormControl(false,[
+  myRecaptcha :FormControl = new FormControl('',[
     Validators.required
     ]);
 
@@ -131,7 +131,7 @@ export class IngresoComponent implements OnInit {
           this.pas.ingreso(this.elUsuario);
             break;            
         
-        case 70: 
+        case 90: 
             console.log("aver aver");
             let alguien = this.pas.quienEsta();
 
@@ -177,7 +177,7 @@ export class IngresoComponent implements OnInit {
   }
 
   resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  //  console.log(`Resolved captcha with response: ${captchaResponse}`);
 }
 
   conAd(){
